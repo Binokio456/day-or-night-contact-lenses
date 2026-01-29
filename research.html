@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Исследование</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, #2E7D32, #388E3C);
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        .menu-title {
+            color: white;
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .menu-button {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            text-align: left;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button:active {
+            transform: translateX(2px);
+        }
+
+        .button-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 28px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2, h3 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+
+
+        .important-note {
+            background: #FFF3E0;
+            border: 4px solid #FF0000;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2E7D32;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 250px;
+            right: 0;
+            width: calc(100% - 250px);
+            margin-top: 0;
+        }
+
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 10px 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-button {
+                width: 95%;
+                margin: 5px auto;
+                padding: 12px 15px;
+                text-align: center;
+            }
+
+            .menu-button:hover {
+                transform: translateY(-2px);
+            }
+
+            .header {
+                font-size: 22px;
+                padding: 25px 15px;
+            }
+
+            .footer {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        .menu-button.active {
+            background: white;
+            color: #2E7D32;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button.active .button-icon {
+           color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="menu-title">Навигация</div>
+
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/" class="menu-button active">
+            <span class="button-icon">🏠</span>
+            Главная
+        </a>
+
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/research" class="menu-button">
+            <span class="button-icon">📖</span>
+            Исследование
+        </a>
+
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/safety" class="menu-button">
+            <span class="button-icon">🛡️</span>
+            Безопасное использование
+        </a>
+
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/care" class="menu-button">
+            <span class="button-icon">💧</span>
+            Уход за линзами
+        </a>
+
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/clinics" class="menu-button">
+            <span class="button-icon">🏥</span>
+            Клиники
+        </a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">Исследование</div>
+
+
+        <div class="container">
+            <div class="content-section">
+                 <h2>Исследование: Ночные или контактные линзы. Какие выбрать?</h2>
+
+                <h3>Почему это важно</h3>
+                <p>Проблема близорукости сегодня касается очень многих. Специалисты Всемирной организации здравоохранения отмечают, что нарушения зрения стали массовым явлением. Особенно тревожит рост детской близорукости. В нашей стране от неё страдает примерно каждый третий ребёнок. Современная медицина предлагает два подхода: обычные линзы, которые носят днём, и специальные ночные линзы. В этой работе мы разберём, как те и другие влияют на здоровье глаз, основываясь на данных исследований и рекомендациях врачей.</p>
+
+                <h3>1. Как работают разные типы линз</h3>
+
+                <h4>1.1. Обычные дневные линзы</h4>
+                <ul>
+                    <li><strong>Принцип действия:</strong> При ношении исправляет путь световых лучей, попадающих на глаз. Человек надевает их утром и снимает вечером.</li>
+                    <li><strong>Из чего делают:</strong> Мягкие, гибкие материалы, которые пропускают воздух.</li>
+                    <li><strong>Варианты ношения:</strong> Только днём или, в особых случаях, несколько дней подряд (но это рискованно).</li>
+                </ul>
+
+                <h4>1.2. Специальные ночные линзы (ортокератологические)</h4>
+                <ul>
+                    <li><strong>Принцип действия:</strong> Это жёсткие линзы, которые надеваются только на время сна. Они очень бережно и временно меняют форму поверхности глаза (роговицы). Утром линзы снимают, а глаз сохраняет новую форму на весь день, позволяя видеть чётко без очков и линз.</li>
+                    <li><strong>Главное преимущество:</strong> Они исправляют зрение и помогают <strong>замедлить развитие близорукости</strong> у детей. Исследования показывают, что они могут снизить скорость ухудшения зрения на 40-60%.</li>
+                </ul>
+
+                <h3>2. Сравнение: польза и риски</h3>
+
+                <h4>2.1. Безопасность и возможные проблемы</h4>
+                <ul>
+                    <li><strong>С дневными линзами:</strong> Основная опасность — <strong>инфекция</strong> (воспаление роговицы), если не соблюдать чистоту или носить их слишком долго. Также люди сталкиваются с ощущением сухости и песка в глазах к концу дня.</li>
+                    <li><strong>С ночными линзами:</strong> Риск занести инфекцию тоже есть, но он не выше, чем при ответственном ношении дневных линз, если строго следовать инструкциям. В начале использования возможен небольшой дискомфорт. <strong>Самое важное</strong> — чтобы эти линзы подбирал только квалифицированный специалист и регулярно наблюдал за состоянием глаз.</li>
+                </ul>
+
+                <h4>2.2. Влияние на ухудшение зрения</h4>
+                <ul>
+                    <li><strong>Дневные линзы:</strong> <strong>Не останавливают</strong> процесс роста близорукости. Они просто помогают хорошо видеть здесь и сейчас.</li>
+                    <li><strong>Ночные линзы:</strong> Являются <strong>доказанным способом сдерживания близорукости</strong>. Они создают на сетчатке особый оптический сигнал, который «сообщает» глазу, что расти дальше не нужно. Именно поэтому их часто рекомендуют детям, у которых зрение падает быстро.</li>
+                </ul>
+
+                <h4>2.3. Что удобнее в жизни?</h4>
+                <ul>
+                    <li><strong>Дневные линзы:</strong>
+                        <ul>
+                            <li><strong>Плюсы:</strong> Большой выбор, легко купить, можно менять часто.</li>
+                            <li><strong>Минусы:</strong> Каждый день нужно надевать и снимать, носить с собой растворы, нельзя в них плавать, иногда они мешают и натирают.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ночные линзы:</strong>
+                        <ul>
+                            <li><strong>Плюсы:</strong> Днём ты абсолютно свободен — можно заниматься спортом, плавать, работать в пыльном помещении. Зрение часто даже острее, чем в очках.</li>
+                            <li><strong>Минусы:</strong> <strong>Нужна дисциплина:</strong> надевать почти каждую ночь. Гигиена должна быть безупречной. Сам метод дороже, так как требует сложных линз и постоянных визитов к врачу.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>3. Кому что подходит?</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Дневные линзы</th>
+                            <th>Ночные линзы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Основная задача</strong></td>
+                            <td>Просто скорректировать зрение у взрослых и подростков.</td>
+                            <td>1. Скорректировать зрение.<br>2. <strong>Замедлить развитие близорукости у детей.</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>С какого возраста</strong></td>
+                            <td>Обычно с подросткового, когда человек сам отвечает за чистоту.</td>
+                            <td>Можно с 6-7 лет, если и ребёнок, и родители готовы к тщательному уходу.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Когда нельзя</strong></td>
+                            <td>Воспаления, очень сухие глаза, аллергия.</td>
+                            <td><strong>Строго нельзя:</strong> при болезнях роговицы, воспалении. <strong>Осторожно:</strong> при сильном астигматизме.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>4. Главные итоги</h3>
+                <p>Проанализировав данные, можно сделать следующие выводы:</p>
+                <ol>
+                    <li><strong>Обычные дневные линзы</strong> — это популярный и доступный способ хорошо видеть. Их основной <strong>эффект на глаз</strong> связан с возможными <strong>проблемами из-за недостатка кислорода и инфекций</strong>, если не соблюдать правила. На саму причину близорукости они не действуют.</li>
+                    <li><strong>Ночные ортокератологические линзы</strong> — это более сложная технология, которая <strong>и исправляет зрение, и лечит</strong>. Их самое важное положительное действие — <strong>реальное замедление ухудшения зрения у детей</strong>. Изменение формы роговицы под их воздействием безопасно и проходит, если перестать их носить.</li>
+                    <li><strong>Что выбрать</strong>, зависит от цели. Если нужно просто удобно видеть — подойдут дневные. Если задача — <strong>остановить падение зрения у ребёнка</strong>, то стоит рассмотреть ночные линзы. Решение должен принимать врач после полного обследования.</li>
+                    <li><strong>Залог здоровья глаз</strong> в любом случае — это <strong>чистота, режим и регулярные проверки у врача</strong>. Ночные линзы требуют ещё больше ответственности и постоянного наблюдения специалиста.</li>
+                </ol>
+                <p>Таким образом, сегодня у нас есть выбор: дневные линзы для ежедневного комфорта и ночные линзы как инструмент активной заботы о здоровье детских глаз в условиях, когда близорукость становится всё более распространённой.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Перед использованием любых линз обязательно проконсультируйтесь с офтальмологом</p>
+        </div>
+    <div>
+
+        <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const currentUrl = window.location.href;
+
+
+            const menuButtons = document.querySelectorAll('.menu-button');
+
+
+            menuButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+
+            let activeButton = null;
+
+            menuButtons.forEach(button => {
+
+                const buttonUrl = button.href;
+
+
+                if (buttonUrl === currentUrl) {
+                    activeButton = button;
+                }
+
+
+                if (currentUrl.endsWith('5000/') && buttonUrl.endsWith('5000')) {
+                    activeButton = button;
+                }
+            });
+
+
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+
+            if (!activeButton) {
+                const currentPath = window.location.pathname;
+
+                menuButtons.forEach(button => {
+
+                    const buttonUrl = new URL(button.href);
+                    const buttonPath = buttonUrl.pathname;
+
+
+                    if (buttonPath === currentPath) {
+                        button.classList.add('active');
+                    }
+
+
+                    if (currentPath === '/' && buttonPath === '/') {
+                button.classList.add('active');
+                    }
+
+
+                    if (currentPath === '' && (buttonPath === '/' || buttonPath === '')) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
