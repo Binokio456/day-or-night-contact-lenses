@@ -20,7 +20,6 @@
             min-height: 100vh;
         }
 
-
         .sidebar {
             width: 250px;
             background: linear-gradient(to bottom, #2E7D32, #388E3C);
@@ -154,7 +153,6 @@
             font-weight: 600;
         }
 
-
         .important-note {
             background: #FFF3E0;
             border: 4px solid #FF0000;
@@ -176,6 +174,16 @@
             margin-top: 0;
         }
 
+        .menu-button.active {
+            background: white;
+            color: #2E7D32;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button.active .button-icon {
+           color: #4CAF50;
+        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -212,16 +220,6 @@
             }
         }
 
-        .menu-button.active {
-            background: white;
-            color: #2E7D32;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-button.active .button-icon {
-           color: #4CAF50;
-        }
     </style>
 </head>
 <body>
