@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, #2E7D32, #388E3C);
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        .menu-title {
+            color: white;
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .menu-button {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            text-align: left;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button:active {
+            transform: translateX(2px);
+        }
+
+        .button-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 28px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 30px 40px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .important-note {
+            background: #FFF3E0;
+            border: 4px solid #FF0000;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2E7D32;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 250px;
+            right: 0;
+            width: calc(100% - 250px);
+            margin-top: 0;
+        }
+
+        .menu-button.active {
+            background: white;
+            color: #2E7D32;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-button.active .button-icon {
+           color: #4CAF50;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: linear-gradient(to bottom, #2E7D32, #388E3C);
+            padding: 10px 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .mobile-menu-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            padding: 0 10px;
+        }
+
+        .mobile-menu-button {
+            flex: 1 1 auto;
+            min-width: 80px;
+            padding: 10px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .mobile-menu-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-button.active {
+            background: white;
+            color: #2E7D32;
+            font-weight: 600;
+        }
+
+        .mobile-menu-button .button-icon {
+            margin-right: 3px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header {
+                font-size: 22px;
+                padding: 25px 15px;
+                margin-top: 0;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .footer {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu-button {
+                min-width: 60px;
+                font-size: 12px;
+                padding: 8px 4px;
+            }
+
+            .mobile-menu-button .button-icon {
+                font-size: 12px;
+                margin-right: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="menu-title">Навигация</div>
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/" class="menu-button active">
+            <span class="button-icon">🏠</span>
+            Главная
+        </a>
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/research" class="menu-button">
+            <span class="button-icon">📖</span>
+            Исследование
+        </a>
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/safety" class="menu-button">
+            <span class="button-icon">🛡️</span>
+            Безопасное использование
+        </a>
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/care" class="menu-button">
+            <span class="button-icon">💧</span>
+            Уход за линзами
+        </a>
+
+        <a href="https://binokio456.github.io/day-or-night-contact-lenses/clinics" class="menu-button">
+            <span class="button-icon">🏥</span>
+            Клиники
+        </a>
+    </div>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-buttons">
+            <a href="https://binokio456.github.io/day-or-night-contact-lenses/" class="mobile-menu-button active">
+                <span class="button-icon">🏠</span>
+                <span>Главная</span>
+            </a>
+            <a href="https://binokio456.github.io/day-or-night-contact-lenses/research" class="mobile-menu-button">
+                <span class="button-icon">📖</span>
+                <span>Исслед.</span>
+            </a>
+            <a href="https://binokio456.github.io/day-or-night-contact-lenses/safety" class="mobile-menu-button">
+                <span class="button-icon">🛡️</span>
+                <span>Безопас.</span>
+            </a>
+            <a href="https://binokio456.github.io/day-or-night-contact-lenses/care" class="mobile-menu-button">
+                <span class="button-icon">💧</span>
+                <span>Уход</span>
+            </a>
+            <a href="https://binokio456.github.io/day-or-night-contact-lenses/clinics" class="mobile-menu-button">
+                <span class="button-icon">🏥</span>
+                <span>Клиники</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">Предупреждение</div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Добро пожаловать на сайт!</h2>
+                <p>Используйте меню слева для навигации по разделам сайта</p>
+
+                <div class="important-note">
+                    <h3>⚠️ Важно знать</h3>
+                    <p>Этот сайт создан в информационных целях. Перед использованием любых линз обязательно проконсультируйтесь с квалифицированным офтальмологом.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Перед использованием любых линз обязательно проконсультируйтесь с офтальмологом</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUrl = window.location.href;
+            const menuButtons = document.querySelectorAll('.menu-button');
+            const mobileMenuButtons = document.querySelectorAll('.mobile-menu-button');
+
+            menuButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            mobileMenuButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            let activeButton = null;
+
+            menuButtons.forEach(button => {
+                const buttonUrl = button.href;
+                if (buttonUrl === currentUrl) {
+                    activeButton = button;
+                }
+            });
+
+            if (!activeButton) {
+                const currentPath = window.location.pathname;
+
+                menuButtons.forEach(button => {
+                    const buttonUrl = new URL(button.href);
+                    const buttonPath = buttonUrl.pathname;
+
+                    if (buttonPath === currentPath) {
+                        activeButton = button;
+                    }
+
+                    if (currentPath === '/' && buttonPath === '/') {
+                        activeButton = button;
+                    }
+                });
+            }
+
+            if (activeButton) {
+                activeButton.classList.add('active');
+
+                const activeHref = activeButton.href;
+                mobileMenuButtons.forEach(button => {
+                    if (button.href === activeHref) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
